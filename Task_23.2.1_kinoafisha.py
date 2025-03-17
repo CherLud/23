@@ -21,9 +21,12 @@ for entry in entries:
     rating = entry.find('span', class_='mark_num').text
 
     data.append({'film_name': film_name, 'film_genre': film_genre, 'release_date': release_date, 'rating': rating})
-#print(data)
+
+df = pd.DataFrame(data)
+df.to_excel('user_rates_all.xlsx')
 
 data1 = sorted(data, key=itemgetter('rating'), reverse=True)
 print(f'ТОП 20 фильмов с высшим рейтингом:\n {data1[:20]}')
 df = pd.DataFrame(data1[:20])
-df.to_excel('user_rates5.xlsx')
+df.to_excel('user_rates_top20.xlsx')
+
